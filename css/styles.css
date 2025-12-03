@@ -357,13 +357,15 @@ img {
 
 .bold__font {
     max-width: 700px;
-    font-family: 'Montserrat-Bold', sans-serif;
-
-}
-
-.bold__font_italic {
     font-size: 34px;
+    font-family: 'Montserrat-Bold', sans-serif;
+}
+.bold__font_italic {
     font-style: italic;
+    color: var(--hero-bold-italic);
+}
+.bold__font_legend {
+    font-size: 20px;
     color: var(--hero-bold-italic);
 }
 
