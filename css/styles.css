@@ -85,6 +85,7 @@ ul {
 a {
     text-decoration: none;
     cursor: pointer;
+    color: inherit;
 }
 
 h1,
@@ -383,6 +384,7 @@ img {
     }
     .hero__subtitle {
         font-size: 26px;
+        padding-bottom: 50px;
     }
 }
 @media (max-width: 370px) {
@@ -574,6 +576,10 @@ img {
     font-style: normal;
 }
 
+.buttons {
+    margin-bottom: 25px;
+}
+
 .button__email {
     border: 1px solid #000;
     padding: 15px 25px;
@@ -595,6 +601,7 @@ img {
     background-color: var(--button-bg-hover);
     color: var(--button-text-hover);
 }
+
 /* ===================== */
 .details {
     display: none;
