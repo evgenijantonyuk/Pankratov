@@ -9,19 +9,45 @@ openMenuBtn.addEventListener('click', function () {
     mobileMenu.classList.toggle('active')
     closeMenu.classList.toggle('active')
 })
-// =============================
-const detailsButton = document.getElementById('detailsId')
-const details = document.querySelector('.details')
-const iconClose = document.querySelector('.icon__close')
+// ======================================== modal ===========================================
 
-detailsButton.addEventListener('click', openDetails)
-iconClose.addEventListener('click', closeDetails)
-
-function openDetails() {
-    details.classList.add('show')
-}
-function closeDetails() {
-    details.classList.remove('show')
-}
+    const buttons = document.querySelectorAll('.btn')
+    const details = document.querySelector('.details')
+    const iconCloses = document.querySelectorAll('.icon__close')
+    
+    details.style.cssText = `
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+`
+    
+    const closeModal = (event) => {
+        const target = event.target
+        if (target === details ||
+            (iconCloses && target.closest('.icon__close')) ||
+            event.code === 'Escape'
+        ) {
+            details.style.opacity = 0
+            setTimeout(() => {
+                details.style.visibility = 'hidden'
+            }, 500)
+            window.removeEventListener('click', closeModal)
+        }
+    }
+    
+    const openModal = () => {
+        details.style.visibility = 'visible'
+        details.style.opacity = 1
+        window.addEventListener('keydown', closeModal)
+    }
+    
+    for (let button of buttons) {
+        button.addEventListener('click', openModal)
+    }
+    
+    for (let close of iconCloses) {
+        details.addEventListener('click', closeModal)
+    }
 
 

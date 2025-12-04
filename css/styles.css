@@ -588,6 +588,7 @@ img {
     background-color: var(--button-bg);
     cursor: pointer;
     transition: .3s ease;
+    outline: none;
 }
 .button__email:active {
     background-color: var(--button-bg-hover);
@@ -604,22 +605,40 @@ img {
 
 /* ===================== */
 .details {
+    position: fixed;
+    inset: 0;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+    overflow-y: auto;
     display: none;
-    position: absolute;
-    width: 500px;
-    color: #ffffff;
+    z-index: 2;
+}
+
+.details__main {
+    position: relative;
+    max-width: 600px;
     background-color: var(--button-bg);
-    padding: 25px;
-    border-radius: 5px;
-    top: 0;
-    right: 35%;
+    margin: auto;
+    border-radius: 15px ;
+    padding: 30px;
+    cursor: default;
+}
+
+.modal__close {
+    background-color:  transparent;
+    border:  none;
+    cursor: pointer;
+}
+
+.details__container {
+    color: #ffffff;
     font-family: "Lato-Regular", sans-serif;
     font-style: normal;
     font-weight: 400;
     letter-spacing: 1px;
     line-height: normal;
     font-size: 18px;
-    z-index: 2;
 }
 
 .details__item {
@@ -628,13 +647,32 @@ img {
 }
 
 .show {
-    display: block;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal__close {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
 .icon__close {
-    margin-bottom: 15px;
     cursor: pointer;
     width:  20px;
+    outline: 1px solid transparent;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    outline-offset: 3px;
+    border-radius: 3px;
+    transition: outline-color .15s ease-in-out;
+}
+.icon__close:focus-visible {
+    outline-color: #311804;
 }
 
 @media (max-width: 780px) {
@@ -645,8 +683,9 @@ img {
         text-align: center;
     }
     .details {
-        left: 15px;
-        width: 300px;
+        /*left: 15px;*/
+        width: 100%;
+        padding: 0 15px;
     }
 }
 @media (max-width: 520px) {
